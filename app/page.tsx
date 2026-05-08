@@ -1,9 +1,10 @@
+import Navbar from "../components/home/navbar";
+//import Hero from "../components/home/hero";
+
 export default function Home() {
   return (
-    <main className="h-screen flex items-center justify-center bg-black">
-      <h1 className="text-6xl font-bold tracking-tight">
-        HireMind AI 🚀
-      </h1>
+    <main className="bg-black text-white">
+      <Navbar />
     </main>
   );
 }

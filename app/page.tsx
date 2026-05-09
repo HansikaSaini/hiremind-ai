@@ -4,6 +4,7 @@ import Trusted from "../components/home/Trusted";
 import Features from "../components/home/Features";
 import HowItWorks from "../components/home/HowItWorks";
 import DashboardPreview from "../components/home/Dashboard";
+import Testimonials from "../components/home/Testimonials";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Features />
       <HowItWorks />
       <DashboardPreview />
+      <Testimonials/>      
     </main>
   );
 }

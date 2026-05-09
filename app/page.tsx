@@ -1,11 +1,13 @@
-import Navbar from "../components/home/navbar";
-import Hero from "../components/home/hero";
+import Navbar from "../components/home/Navbar";
+import Hero from "../components/home/Hero";
+import Trusted from "../components/home/Trusted";
 
 export default function Home() {
   return (
     <main className="bg-black text-white">
       <Navbar />
       <Hero />
+      <Trusted />
     </main>
   );
 }

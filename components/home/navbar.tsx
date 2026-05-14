@@ -2,13 +2,17 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
+import { UserButton, useUser } from "@clerk/nextjs";
 const navLinks = [
   { title: "Features", href: "#features" },
   { title: "How It Works", href: "#how-it-works" },
   { title: "Testimonials", href: "#testimonials" },
 ];
+
 export default function Navbar() {
+   const { isSignedIn } = useUser();
   return (
+   
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -51,17 +55,81 @@ export default function Navbar() {
           ))}{" "}
         </div>{" "}
         {/* CTA Button */}{" "}
+        <div className="flex items-center gap-4">
+
+  {/* Logged Out */}
+ <div className="flex items-center gap-4">
+
+  {!isSignedIn ? (
+    <>
+
+      <Link href="/sign-in">
+
+        <button className="text-gray-300 hover:text-white transition duration-300">
+          Sign In
+        </button>
+
+      </Link>
+
+      <Link href="/sign-up">
+
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{
+            scale: 1.05,
+          }}
+          whileTap={{
+            scale: 0.95,
+          }}
           className="relative overflow-hidden rounded-full px-6 py-3 font-medium text-white border border-white/10 bg-white/5 backdrop-blur-xl transition-all duration-300 hover:border-purple-400/40 hover:shadow-[0_0_25px_rgba(168,85,247,0.4)]"
         >
-          {" "}
+
           <span className="relative z-10">
             Get Started
-          </span> {/* Glow Effect */}{" "}
-          <div className="absolute inset-0 bg-linear-to-r from-purple-500/20 to-cyan-500/20 opacity-0 hover:opacity-100 transition-opacity duration-300" />{" "}
-        </motion.button>{" "}
+          </span>
+
+          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 opacity-0 hover:opacity-100 transition-opacity duration-300" />
+
+        </motion.button>
+
+      </Link>
+
+    </>
+  ) : (
+    <>
+
+      <Link href="/dashboard">
+
+        <motion.button
+          whileHover={{
+            scale: 1.05,
+          }}
+          whileTap={{
+            scale: 0.95,
+          }}
+          className="relative overflow-hidden rounded-full px-6 py-3 font-medium text-white border border-white/10 bg-white/5 backdrop-blur-xl transition-all duration-300 hover:border-cyan-400/40 hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]"
+        >
+
+          Dashboard
+
+        </motion.button>
+
+      </Link>
+
+      <UserButton
+        appearance={{
+          elements: {
+            avatarBox:
+              "w-11 h-11 ring-2 ring-white/10 hover:ring-cyan-400 transition duration-300",
+          },
+        }}
+      />
+
+    </>
+  )}
+
+</div>
+
+</div>{" "}
       </div>{" "}
     </motion.nav>
   );
